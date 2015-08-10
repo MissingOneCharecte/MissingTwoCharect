@@ -12,7 +12,7 @@ $dbc->exec("CREATE TABLE electronics(
 	id INT UNSIGNED NOT NULL AUTO_INCREMENT,
     user_name VARCHAR(100) NOT NULL DEFAULT 'User Name',
     sales DECIMAL(10,2) NOT NULL,
-    publish_date INT NOT NULL,
+    publish_date VARCHAR(40) NOT NULL,
     PRIMARY KEY (id)"
 );
 $dbc->exec(
@@ -22,7 +22,7 @@ $dbc->exec("CREATE TABLE furniture(
 	id INT UNSIGNED NOT NULL AUTO_INCREMENT,
     user_name VARCHAR(100) NOT NULL DEFAULT 'User Name',
     sales DECIMAL(10,2) NOT NULL,
-    publish_date INT NOT NULL,
+    publish_date VARCHAR(40) NOT NULL,
     PRIMARY KEY (id)"
 );
 $dbc->exec(
@@ -32,7 +32,7 @@ $dbc->exec("CREATE TABLE cars(
 	id INT UNSIGNED NOT NULL AUTO_INCREMENT,
     user_name VARCHAR(100) NOT NULL DEFAULT 'User Name',
     sales DECIMAL(10,2) NOT NULL,
-    publish_date INT NOT NULL,
+    publish_date VARCHAR(40) NOT NULL,
     PRIMARY KEY (id)"
 );
 $dbc->exec(
@@ -42,7 +42,7 @@ $dbc->exec("CREATE TABLE clothes(
 	id INT UNSIGNED NOT NULL AUTO_INCREMENT,
     user_name VARCHAR(100) NOT NULL DEFAULT 'User Name',
     sales DECIMAL(10,2) NOT NULL,
-    publish_date INT NOT NULL,
+    publish_date VARCHAR(40) NOT NULL,
     PRIMARY KEY (id)"
 );
 $dbc->exec(
@@ -52,7 +52,7 @@ $dbc->exec("CREATE TABLE pets(
 	id INT UNSIGNED NOT NULL AUTO_INCREMENT,
     user_name VARCHAR(100) NOT NULL DEFAULT 'User Name',
     sales DECIMAL(10,2) NOT NULL,
-    publish_date INT NOT NULL,
+    publish_date VARCHAR(40) NOT NULL,
     PRIMARY KEY (id)"
 );
 ?>
