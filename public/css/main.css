@@ -1,7 +1,14 @@
 body {
 	background-image: url(/img/Grey.jpg);
+	text-align: center;
 }
 #navbar {
 	width: auto;
-	height: 50px;
+	height: 30px;
+	background-color: grey;
+	border-radius: 10px;
+ 	border-style: solid;
+ 	border-color: black;
+	position: absolute;
+	padding-top: 5px;
 }
