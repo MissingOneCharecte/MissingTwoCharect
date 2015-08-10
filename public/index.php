@@ -3,9 +3,9 @@
 <head>
 	<title>Marketing Homepage</title>
 	<link rel="stylesheet" type="text/css" href="css/main.css">
-	<link rel="stylesheet" type="text/css" href="../views/partials/header.php">
-	<link rel="stylesheet" type="text/css" href="../views/partials/footer.php">
-	<link rel="stylesheet" type="text/css" href="../views/partials/navbar.php">
+	<?php include '../viwws/partials/navbar.php'
+	<?php include '../viwws/partials/header.php'
+	<?php include '../viwws/partials/footer.php'
 </head>
 <body>
 
