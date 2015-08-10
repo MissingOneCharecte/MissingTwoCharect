@@ -1,3 +1,4 @@
+<?php
 USE list_db;
 DROP TABLE IF EXISTS "electronics";
 CREATE TABLE electronics(
@@ -39,3 +40,5 @@ CREATE TABLE pets(
     publish_date INT NOT NULL,
     PRIMARY KEY (id)
 );
+
+?>
