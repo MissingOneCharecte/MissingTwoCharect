@@ -14,7 +14,20 @@ $dbc->exec('CREATE TABLE listed_items(
     sales DECIMAL(10,2) NOT NULL,
     publish_date VARCHAR(40) NOT NULL,
     category VARCHAR(50) NOT NULL,
+    description TEXT, 
     PRIMARY KEY (id),
     UNIQUE (username)
 )');
+
+$dbc->exec('CREATE TABLE "users" (
+  "id" int(11) unsigned NOT NULL AUTO_INCREMENT,
+  "username" varchar(32) NOT NULL DEFAULT,
+  "email" varchar(100) NOT NULL DEFAULT,
+  "first_name" varchar(75) DEFAULT NULL,
+  "last_name" int(75) DEFAULT NULL,
+  PRIMARY KEY ("id"),
+  UNIQUE KEY "username" ("username"),
+  UNIQUE KEY "email" ("email")
+)');
+
 ?>

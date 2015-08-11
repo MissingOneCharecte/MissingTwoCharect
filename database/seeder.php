@@ -1,5 +1,6 @@
 <?php
 	require_once 'migration.php';
+	require_once '../utils/Input.php';
 
 	$listed_items = [
 		['username' => 'IpodBoy71' , 'sales' => '120.01', 'publish_date' => '06-25-2015', 'category' => 'electronics'],
@@ -31,17 +32,30 @@
 	$truncateQuery = 'TRUNCATE TABLE listed_items;'; 
 	$dbc->exec($truncateQuery);
 
-	$stmt = $dbc->prepare('INSERT INTO listed_items (username , sales , publish_date , category) VALUES (:username, :sales , :publish_date , :category)');
+	$stmt = $dbc->prepare('INSERT INTO listed_items (username , sales , publish_date , category, description) VALUES (
+		:username, 
+		:sales, 
+		:publish_date, 
+		:category, 
+		:description)'
+	);
 	
 	foreach ($listed_items as $item) {
 		$stmt->bindValue(':username', $item['username'], PDO::PARAM_STR);
 		$stmt->bindValue(':sales', $item['sales'], PDO::PARAM_STR); 
 		$stmt->bindValue(':publish_date', $item['publish_date'], PDO::PARAM_STR);
 		$stmt->bindValue(':category', $item['category'], PDO::PARAM_STR);
+
+		if(inputHas('description')) {
+			$descriptionVar = escape(inputGet('description'));
+			$stmt->bindValue(':description' , $_POST['description'] , PDO::PARAM_STR);
+		} 
 		$stmt->execute();
 	}
 
-	$stmt = $dbc->prepare('SELECT * FROM listed_items ORDER BY sales DESC;');
-	$stmt->execute();
+	$sort = $dbc->prepare('SELECT * FROM listed_items ORDER BY sales DESC;');
+	$sort->execute();
+
+	print_r($listed_items);
 
 ?>
