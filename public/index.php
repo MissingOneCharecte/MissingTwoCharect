@@ -24,6 +24,10 @@
 			height: 30%;
 			width: 30%;
 		}
+		.test {
+			height:100px;
+			width: 100px;
+		}
 	</style>
 </head>
 <body>
@@ -31,7 +35,8 @@
 			<?php require_once'../views/partials/navbar.php'; ?>
 		<div class="index" id="content">
 			<span class="sell electronics">
-				<a rel="stylesheet" type="text/css" href="electronics">Electronics</a>
+				<a rel="stylesheet" type="text/css" href="electronics">Electronics</a><br>
+				<img class='test' src="/img/test.jpg">
 			</span>
 
 			<span class="sell furniture">
@@ -50,7 +55,7 @@
 				<a rel="stylesheet" type="text/css" href="pets">Pets</a>
 			</span>
 		</div>
-		
+
 		<?php require_once'../views/partials/footer.php' ?>
 	</div>
 	<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>

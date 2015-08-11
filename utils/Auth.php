@@ -34,7 +34,7 @@
 
 			public static function logout()
 			{
-				header("Location: missingonecharecte.dev/auth.logout.php");
+				header("Location: missingonecharecte.dev/logout.php");
 				exit();
 			}
 
