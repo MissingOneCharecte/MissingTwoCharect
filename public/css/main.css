@@ -37,6 +37,9 @@ html, body {
 a:visited {
 	color: #38373C;
 }
+a:hover {
+	color: #73717D;
+}
 a {
 	font-size: 20px;
 	color: #38373C;
