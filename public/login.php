@@ -1,5 +1,4 @@
 <?php
-require_once'../views/partials/navbar.php';
 // if($_FILES) {
 
 //   $uploads_dirctory = 'img/uploads/';
