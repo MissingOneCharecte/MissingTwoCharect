@@ -19,13 +19,10 @@ $dbc->exec('CREATE TABLE listed_items(
     UNIQUE (username)
 )');
 
-$dbc2 = new PDO('mysql:host='.DB_HOST.';dbname=users_db' , DB_USER, DB_PASS);
-$dbc2->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-$dbc2->exec(
+$dbc->exec(
         'DROP TABLE IF EXISTS users;'
     );
-$dbc2->exec('CREATE TABLE users (
+$dbc->exec('CREATE TABLE users (
     id INT unsigned NOT NULL AUTO_INCREMENT,
     username varchar(32) NOT NULL,
     password TEXT,

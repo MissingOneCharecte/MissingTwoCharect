@@ -32,12 +32,11 @@
 	$truncateQuery = 'TRUNCATE TABLE listed_items;'; 
 	$dbc->exec($truncateQuery);
 
-	$stmt = $dbc->prepare('INSERT INTO listed_items (username , sales , publish_date , category, description) VALUES (
+	$stmt = $dbc->prepare('INSERT INTO listed_items (username , sales , publish_date , category) VALUES (
 		:username, 
 		:sales, 
 		:publish_date, 
-		:category, 
-		:description)'
+		:category )'
 	);
 	
 	foreach ($listed_items as $item) {
@@ -51,16 +50,35 @@
 		// 	$descriptionVar = escape(inputGet('description'));
 		// 	$stmt->bindValue(':description' , $_POST['description'] , PDO::PARAM_STR);
 		// } 
-		// $stmt->execute();
+		$stmt->execute();
 	}
 
 	$sort = $dbc->prepare('SELECT * FROM listed_items ORDER BY sales DESC;');
 	$sort->execute();
 
-	//Users section 
+	//Users section /////////////////////////////////////////////////
+	$truncateQuery = 'TRUNCATE TABLE users;'; 
+	$dbc->exec($truncateQuery);
 	$users = [
-		['username' => 'Howie' , 'email' => 'HowieSalad@yahoo.com' , 'first_name' => 'howie']
-	]
+		['username' => 'howie' , 'password' => 'salad' , 'email' => 'HowieSalad@yahoo.com']
+	];
+
+	$stmt = $dbc->prepare('INSERT INTO users (username , password , email) VALUES (
+		:username, 
+		:password, 
+		:email )'
+	);
+	
+	foreach ($users as $user) {
+		$stmt->bindValue(':username', $user['username'], PDO::PARAM_STR);
+		$stmt->bindValue(':password', $user['password'], PDO::PARAM_STR); 
+		$stmt->bindValue(':email', $user['email'], PDO::PARAM_STR);
+		
+		// $stmt->bindValue(':first_name', $user['first_name'], PDO::PARAM_STR);
+		// $stmt->bindValue(':last_name', $user['last_name'], PDO::PARAM_STR);
+
+		$stmt->execute();
+	}
 
 
 ?>
