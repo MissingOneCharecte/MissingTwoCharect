@@ -3,13 +3,15 @@ body {
 	color: #000000;
 }
 #navbar {
-	width: 100%;
+	width: 50%;
 	height: 50px;
 	position: absolute;
-	text-align: right;
+	text-align: left;
 }
 #media {
-	
+	width: 70%;
+	left: 50%;
+	position: absolute;
 }
 a:visited {
 	color: #1A29BE;

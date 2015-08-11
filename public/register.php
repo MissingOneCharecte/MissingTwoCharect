@@ -1,4 +1,5 @@
 <?php
+require_once'../views/partials/navbar.php'; 
 ?>
 <!DOCTYPE html>
 <html>
