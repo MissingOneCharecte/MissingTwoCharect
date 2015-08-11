@@ -33,6 +33,7 @@
 	</style>
 </head>
 <body>
+	<h1>testing</h1>
 	<div id="wrapper">
 			<?php require_once'../views/partials/navbar.php'; ?>
 		<div class="index" id="content">
