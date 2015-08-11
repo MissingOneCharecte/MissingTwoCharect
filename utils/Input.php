@@ -1,8 +1,5 @@
 <?php
 
-class Input
-{
-
     function inputHas($key) {
         if(isset($_REQUEST[$key])) {
             return true;
@@ -22,6 +19,10 @@ class Input
     function escape($input) {
         return trim(htmlspecialchars(strip_tags($input)));
     }
+
+class Input
+{
+
 
     /**
      * Check if a given value was passed in the request
