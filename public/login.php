@@ -11,7 +11,6 @@ function pageController() {
     } else {
       $password = $_POST['password'];
       $user = $_POST['username'];
-      auth::attempt(escape($user), escape($password));
     }
   } else {
     $search = escape($_POST['search']);
@@ -32,14 +31,15 @@ function pageController() {
     <div id="wrapper">
       <?php require_once'../views/partials/navbar.php'; ?>
     <div id="content">
-      <form class='form' method="POST">
-      <label>Name</label>
-      <input type="text" name="username"><br>
-      <label>Password</label>
-      <input type="password" name="password"><br>
-      <input type="submit"><br>
-      <a href="register.php">Not a Member? Register Here.</a>
+    <form class='form' method="POST">
+        <label>Name</label>
+        <input type="text" name="username"><br>
+        <label>Password</label>
+        <input type="password" name="password"><br>
+        <input type="submit"><br>
+        <a href="register.php">Not a Member? Register Here.</a>
     </form>
+
     </div>
     <?php require_once'../views/partials/footer.php' ?>
   </div>
