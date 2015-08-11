@@ -7,7 +7,7 @@
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
 <body>
-    <form method="POST">
+    <form class='form' method="POST">
         <label>Name</label>
         <input type="text" name="username"><br>
         <label>Email</label>
