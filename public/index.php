@@ -25,35 +25,48 @@
 			width: 30%;
 		}
 		.test {
-			height:100px;
-			width: 100px;
+/*			position: absolute;
+			float: left;
+			height:50px;
+			width: 50px;*/
 		}
 	</style>
 </head>
 <body>
+	<h1>testing</h1>
 	<div id="wrapper">
 			<?php require_once'../views/partials/navbar.php'; ?>
 		<div class="index" id="content">
 			<span class="sell electronics">
 				<a rel="stylesheet" type="text/css" href="electronics">Electronics</a><br>
-				<img class='test' src="/img/test.jpg">
 			</span>
-
+			<div>
+				<img class='test' src="/img/test.jpg">
+			</div>
 			<span class="sell furniture">
 				<a rel="stylesheet" type="text/css" href="furniture">Furniture</a>
 			</span>
-
+			<div>
+				<img class='test' src="/img/test.jpg">
+			</div>
 			<span class="sell cloths">
 				<a rel="stylesheet" type="text/css" href="cloths">Cloths</a>
 			</span>
-
+			<div>
+				<img class='test' src="/img/test.jpg">
+			</div>
 			<span class="sell cars">
 				<a rel="stylesheet" type="text/css" href="cars">Cars</a>
 			</span>
-
+			<div>
+				<img class='test' src="/img/test.jpg">
+			</div>
 			<span class="sell pets">
 				<a rel="stylesheet" type="text/css" href="pets">Pets</a>
 			</span>
+			<div>
+				<img class='test' src="/img/test.jpg">
+			</div>
 		</div>
 
 		<?php require_once'../views/partials/footer.php' ?>
