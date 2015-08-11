@@ -17,14 +17,20 @@ require_once'../views/partials/navbar.php';
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
 <body>
-    <form class='form' method="POST">
-	    <label>Name</label>
-	    <input type="text" name="username"><br>
-	    <label>Password</label>
-	    <input type="password" name="password"><br>
-	    <input type="submit"><br>
+    <div id="wrapper">
+      <?php require_once'../views/partials/navbar.php'; ?>
+    <div id="content">
+      <form class='form' method="POST">
+      <label>Name</label>
+      <input type="text" name="username"><br>
+      <label>Password</label>
+      <input type="password" name="password"><br>
+      <input type="submit"><br>
       <a href="http://missingonecharecte.dev/register.php">Not a Member? Register Here.</a>
     </form>
+    </div>
+    <?php require_once'../views/partials/footer.php' ?>
+  </div>
 </body>
 </html>
 <!-- <form method='POST' action="upload.php" enctype='multipart/form-data'>

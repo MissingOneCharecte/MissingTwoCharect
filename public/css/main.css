@@ -1,20 +1,40 @@
-body {
+html, body {
+	background-color: darkgrey;
 	background-image: url(/img/Grey.jpg);
 	color: #000000;
+	margin:0;
+	padding:0;
+	height:100%;
+}
+#wrapper {
+	min-height:100%;
+	position:relative;
+}
+#header {
+	padding-top:20px;
+	background-image: url(/img/white-and-gray-background.jpg);
+}
+#content {
+	padding-bottom: 100px;
+}
+#footer {
+	width:100%;
+	height:100px;
+	position:absolute;
+	bottom:0;
+	left:0;
+	background-image: url(/img/red.jpg);
+	color: grey;
 }
 #navbar {
-	width: 50%;
-	height: 50px;
-	position: absolute;
-	text-align: left;
-}
-#media {
-	width: 70%;
-	left: 50%;
-	position: absolute;
+	width: 90%;
 }
 a:visited {
-	color: #1A29BE;
+	color: #38373C;
+}
+a {
+	font-size: 20px;
+	color: #38373C;
 }
 .form {
 	position: relative;
