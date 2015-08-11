@@ -6,7 +6,7 @@ define('DB_PASS','');
 $dbc = new PDO('mysql:host='.DB_HOST.';dbname='.DB_NAME, DB_USER, DB_PASS);
 $dbc->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 $dbc->exec(
-		'DROP TABLE IF EXISTS listed_items'
+		'DROP TABLE IF EXISTS listed_items;'
 	);
 $dbc->exec('CREATE TABLE listed_items(
 	id INT UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -19,15 +19,22 @@ $dbc->exec('CREATE TABLE listed_items(
     UNIQUE (username)
 )');
 
-$dbc->exec('CREATE TABLE "users" (
-  "id" int(11) unsigned NOT NULL AUTO_INCREMENT,
-  "username" varchar(32) NOT NULL DEFAULT,
-  "email" varchar(100) NOT NULL DEFAULT,
-  "first_name" varchar(75) DEFAULT NULL,
-  "last_name" int(75) DEFAULT NULL,
-  PRIMARY KEY ("id"),
-  UNIQUE KEY "username" ("username"),
-  UNIQUE KEY "email" ("email")
+$dbc2 = new PDO('mysql:host='.DB_HOST.';dbname=users_db' , DB_USER, DB_PASS);
+$dbc2->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+$dbc2->exec(
+        'DROP TABLE IF EXISTS users;'
+    );
+$dbc2->exec('CREATE TABLE users (
+    id INT unsigned NOT NULL AUTO_INCREMENT,
+    username varchar(32) NOT NULL,
+    password TEXT,
+    email varchar(100) NOT NULL,
+    first_name varchar(75),
+    last_name VARCHAR(75),
+    PRIMARY KEY (id),
+    UNIQUE KEY (username),
+    UNIQUE KEY (email)
 )');
 
 ?>
