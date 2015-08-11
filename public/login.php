@@ -1,13 +1,26 @@
 <?php
-// if($_FILES) {
-
-//   $uploads_dirctory = 'img/uploads/';
-//   $filename= $uploads_dirctory . basename($FILES['somefile']['name'])
-
-//   if (move_uploaded_file($_FILES[somefile][tmp_name], $filename)) {
-//     echo '<p>The file '. basename( $_FILES)
-//   }
-// }
+function pageController() {
+  $data = [];
+  if (!empty($_SESSION['status']) && $_SESSION['status'] == 'loggedin') {
+    header("location: http://codeup.dev/authorized.php");
+    exit();
+  }
+  if (empty($_POST['search'])) {
+    if(empty($_POST['username']) || empty($_POST['password']) || is_numeric($_POST['password']) || is_numeric($_POST['username'])) {
+      $fail = " Please enter a Valid user name and Password.";
+    } else {
+      $password = $_POST['password'];
+      $user = $_POST['username'];
+      auth::attempt(escape($user), escape($password));
+    }
+  } else {
+    $search = escape($_POST['search']);
+    header("location: https://duckduckgo.com/?q=$search");
+    exit();
+  }
+  $data['fail'] = " Please enter a Valid user name and Password.";
+  return $data;     
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -25,15 +38,12 @@
       <label>Password</label>
       <input type="password" name="password"><br>
       <input type="submit"><br>
-      <a href="http://missingonecharecte.dev/register.php">Not a Member? Register Here.</a>
+      <a href="register.php">Not a Member? Register Here.</a>
     </form>
     </div>
     <?php require_once'../views/partials/footer.php' ?>
   </div>
+  <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+  <script src="/js/media.js"></script>
 </body>
 </html>
-<!-- <form method='POST' action="upload.php" enctype='multipart/form-data'>
-
-  <input type='file' name='somefile'>
-  <button>Submit this</button>
-  </form> -->

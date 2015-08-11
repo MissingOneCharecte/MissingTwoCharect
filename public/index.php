@@ -1,4 +1,5 @@
-<?php 
+<?php
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -8,32 +9,51 @@
 	<link rel="stylesheet" type="text/css" href="../views/partials/header.php">
 	<link rel="stylesheet" type="text/css" href="../views/partials/footer.php">
 	<link rel="stylesheet" type="text/css" href="../views/partials/navbar.php">
+	<style type="text/css">
+		.index {
+			position: absolute;
+			height: 7%;
+			width: 75%;
+			left: 10%;
+			top: 13%;
+			text-align: center;
+		}
+		.sell {
+			margin-top: 50px;
+			padding: 20px;
+			height: 30%;
+			width: 30%;
+		}
+	</style>
 </head>
 <body>
 	<div id="wrapper">
 			<?php require_once'../views/partials/navbar.php'; ?>
-		<div id="content">
-			<div class="electronics">
+		<div class="index" id="content">
+			<span class="sell electronics">
 				<a rel="stylesheet" type="text/css" href="electronics">Electronics</a>
-			</div>
+			</span>
 
-			<div class="furniture">
+			<span class="sell furniture">
 				<a rel="stylesheet" type="text/css" href="furniture">Furniture</a>
-			</div>
+			</span>
 
-			<div class="cloths">
+			<span class="sell cloths">
 				<a rel="stylesheet" type="text/css" href="cloths">Cloths</a>
-			</div>
+			</span>
 
-			<div class="cars">
+			<span class="sell cars">
 				<a rel="stylesheet" type="text/css" href="cars">Cars</a>
-			</div>
+			</span>
 
-			<div class="pets">
+			<span class="sell pets">
 				<a rel="stylesheet" type="text/css" href="pets">Pets</a>
-			</div>
+			</span>
 		</div>
+		
 		<?php require_once'../views/partials/footer.php' ?>
 	</div>
+	<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+	<script src="/js/media.js"></script>
 </body>
 </html>

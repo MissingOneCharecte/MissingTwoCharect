@@ -20,5 +20,7 @@
         <input type="password" name="retype_password"><br>
         <input type="submit">
     </form>
+    <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="/js/media.js"></script>
 </body>
 </html>
