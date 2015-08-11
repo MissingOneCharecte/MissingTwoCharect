@@ -46,16 +46,21 @@
 		$stmt->bindValue(':publish_date', $item['publish_date'], PDO::PARAM_STR);
 		$stmt->bindValue(':category', $item['category'], PDO::PARAM_STR);
 
-		if(inputHas('description')) {
-			$descriptionVar = escape(inputGet('description'));
-			$stmt->bindValue(':description' , $_POST['description'] , PDO::PARAM_STR);
-		} 
-		$stmt->execute();
+		//commented out for now
+		// if(inputHas('description')) {
+		// 	$descriptionVar = escape(inputGet('description'));
+		// 	$stmt->bindValue(':description' , $_POST['description'] , PDO::PARAM_STR);
+		// } 
+		// $stmt->execute();
 	}
 
 	$sort = $dbc->prepare('SELECT * FROM listed_items ORDER BY sales DESC;');
 	$sort->execute();
 
-	print_r($listed_items);
+	//Users section 
+	$users = [
+		['username' => 'Howie' , 'email' => 'HowieSalad@yahoo.com' , 'first_name' => 'howie']
+	]
+
 
 ?>
