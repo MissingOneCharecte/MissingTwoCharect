@@ -18,7 +18,7 @@ $dbc->exec('CREATE TABLE listed_items(
     PRIMARY KEY (id),
     UNIQUE (username)
 )');
-
+ ;
 $dbc->exec(
         'DROP TABLE IF EXISTS users;'
     );
@@ -27,7 +27,7 @@ $dbc->exec('CREATE TABLE users (
     username varchar(32) NOT NULL,
     password TEXT,
     email varchar(100) NOT NULL,
-    first_name varchar(75),
+    first_name varchar(75),                  
     last_name VARCHAR(75),
     PRIMARY KEY (id),
     UNIQUE KEY (username),
