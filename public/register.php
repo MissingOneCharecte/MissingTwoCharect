@@ -10,6 +10,7 @@
     define('DB_PASS','');
     $dbc = new PDO('mysql:host='.DB_HOST.';dbname='.DB_NAME, DB_USER, DB_PASS);
     $dbc->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $mysqli = new mysqli("127.0.0.1", "root", "", "list_db");
     
     if(inputHas('username') && inputHas('email') && inputHas('password')) {
         if(!($_POST['password'] == $_POST['retype_password'])) {
@@ -24,10 +25,11 @@
         )');
         $username = $_POST['username'];
 
-        $usernameVar = $dbc->query("SELECT * FROM users WHERE username = '$username'");
-
-        if((mysqli_num_rows($usernameVar) > 0) ) {
+        $usernameVar = mysqli_query($mysqli , "SELECT * FROM users WHERE username = '$username'");
+        $result = mysqli_num_rows($usernameVar);
+        if($result > 0) {
             $usernameSame = true;
+            
         } else {
             $usernameSame = false;
             $username = escapeVar(inputGet('username'));
@@ -78,16 +80,15 @@
 </head>
 <body>
     <h1>Register Here!</h1>
-    <?php if(inputHas('username') && inputHas('email') && inputHas('password')) { var_dump($usernameVar);    }  ?>
     <form class='form' method="POST">
         <label>Username</label>
-        <input type="text" name="username"><br> <p id='passwordProblem'> <?php if(isset($usernameSame) && $usernameSame){ echo "Username is taken"; } ?> </p>
+        <input type="text" name="username"><span id='passwordProblem'> <?php if(isset($usernameSame) && $usernameSame == true){ echo "Username is taken"; } ?> </span> <br>
         <label>Email</label>
         <input type="text" name="email"><br>
         <label>Password</label>
         <input type="password" name="password"><br>
         <label>ReType Password</label>
-        <input type="password" name="retype_password"> <p id='passwordProblem'> <?php if(isset($notSame) && $notSame){ echo "Passwords do not match"; } ?> </p>
+        <input type="password" name="retype_password"><span id='passwordProblem'> <?php if(isset($notSame) && $notSame){ echo "Passwords do not match"; } ?> </span> <br>
         <h3>-Optional-</h3>
         <label>First name</label>
         <input type="text" name="first_name"><br>
