@@ -1,27 +1,12 @@
 <?php
 require_once'../database/connect.php';
-$stmt = $dbc->prepare('SELECT * FROM users WHERE id = 1');
-$stmt->execute();
-function pageController() {
-  $data = [];
-  if (!empty($_SESSION['status']) && $_SESSION['status'] == 'loggedin') {
-    header("location: http://codeup.dev/authorized.php");
-    exit();
-  }
-  if (empty($_POST['search'])) {
-    if(empty($_POST['username']) || empty($_POST['password']) || is_numeric($_POST['password']) || is_numeric($_POST['username'])) {
-      $fail = " Please enter a Valid user name and Password.";
-    } else {
-      $password = $_POST['password'];
-      $user = $_POST['username'];
-    }
-  } else {
-    $search = escape($_POST['search']);
-    header("location: https://duckduckgo.com/?q=$search");
-    exit();
-  }
-  $data['fail'] = " Please enter a Valid user name and Password.";
-  return $data;     
+if (!empty($_POST['username']) || !empty($_POST['password'])) {
+    $user = $_POST['username'];
+    $pass = $_POST['password'];
+    $stmt = $dbc->prepare("SELECT * FROM users WHERE username = '$user' AND password = '$pass'");
+}
+if(isset($stmt)) {
+    $stmt->execute();
 }
 ?>
 <!DOCTYPE html>
@@ -37,14 +22,16 @@ function pageController() {
             <table>
         <tr>
             <?php
-            foreach($stmt as $id => $park) { ?>
-            <tr>
-                <td><?= $park['id']; ?>:</td>
-                <td><?= $park['username']; ?></td>
-                <td><?= $park['password']; ?></td>
-                <td><?= $park['email']; ?></td>
-                <tr/>
-                <?php } ?>
+            if (isset($stmt)) {
+                foreach($stmt as $id => $park) { ?>
+                <tr>
+                    <td><?= $park['id']; ?>:</td>
+                    <td><?= $park['username']; ?></td>
+                    <td><?= $park['password']; ?></td>
+                    <td><?= $park['email']; ?></td>
+                    <tr/>
+                    <?php } 
+            }?>
                 <tr/>
             </table>
     <form class='form' method="POST">

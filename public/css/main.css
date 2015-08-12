@@ -94,6 +94,9 @@ tr {
 	left: 50%;
 	transform: translate(-50%, -50%);
 }
+.reghere {
+	text-align: center;
+}
 input {
 	border-style: solid;
 	border-color: #000000;
