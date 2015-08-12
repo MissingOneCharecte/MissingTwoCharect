@@ -1,10 +1,13 @@
 <?php
-
 	class Auth 
 		{
 			//Get user password from the database
-			public static $setPassword = $_SESSION("password");
+			public static $setPassword;
 
+			public static function getPassword($password) {
+				$setPassword = $password;
+				return $setPassword;
+			}
 			//Get input from login field put in parameters and compare that to database info
 			public static function attempt($username, $password) 
 			{

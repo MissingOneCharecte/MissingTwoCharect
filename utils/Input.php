@@ -16,7 +16,7 @@
         }
     }
 
-    function escape($input) {
+    function escapeVar($input) {
         return trim(htmlspecialchars(strip_tags($input)));
     }
 
