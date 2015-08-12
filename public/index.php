@@ -21,10 +21,15 @@ if (isset($_GET['category'])) {
 	} elseif ($_GET['category'] == "pets") {
 		$something = 'pets';
 	}
-	$count = $dbc->query("SELECT count(*) FROM listed_items WHERE category = '$something'")->fetchColumn();
-
-	$stmt = $dbc->prepare("SELECT * FROM listed_items WHERE category = '$something' ORDER BY publish_date DESC LIMIT " . $increment . " OFFSET " . $offSet); 
+	if ($_GET['category'] == "home") {
+		$something = 'home';
+		$stmt = $dbc->prepare('SELECT * FROM listed_items ORDER BY publish_date DESC LIMIT ' . $increment . ' OFFSET ' . $offSet);
+	} else {
+		$count = $dbc->query("SELECT count(*) FROM listed_items WHERE category = '$something'")->fetchColumn();
+		$stmt = $dbc->prepare("SELECT * FROM listed_items WHERE category = '$something' ORDER BY publish_date DESC LIMIT " . $increment . " OFFSET " . $offSet); 
+	}
 } else {
+	$something = 'home';
 	$stmt = $dbc->prepare('SELECT * FROM listed_items ORDER BY publish_date DESC LIMIT ' . $increment . ' OFFSET ' . $offSet);
 }
 // $test = 'electronics';
@@ -35,6 +40,7 @@ $stmt->execute();
 <html>
 <head>
 	<title>Marketing Homepage</title>
+	<link rel="icon" href="img/favicon.ico"/>
 	<link class='link' rel="stylesheet" type="text/css" href="css/main.css">
 	<link class='link' rel="stylesheet" type="text/css" href="../views/partials/header.php">
 	<link class='link' rel="stylesheet" type="text/css" href="../views/partials/footer.php">
@@ -46,22 +52,25 @@ $stmt->execute();
 	<?php require_once'../views/partials/navbar.php'; ?>
 	<div class="index" id="content">
 		<?php if ($number > 1 ) { ?>
-			<a  class='page' href="?page=<?= $number - 1;?>">Previous</a>
+			<a  class='page' href="?category=<?= $something;?>&page=<?= $number - 1;?>">Previous</a>
 		<?php } ?>
+		<span class="sell all">
+			<a class='link' href="?category=home&page=1">All</a>
+		</span>
 		<span class="sell electronics">
-			<a class='link' href="?category=electronics?page=<?= $number; ?>">Electronics</a>
+			<a class='link' href="?category=electronics&page=1">Electronics</a>
 		</span>
 		<span class="sell furniture">
-			<a class='link' href="?category=furniture?page=<?= $number; ?>">Furniture</a>
+			<a class='link' href="?category=furniture&page=1">Furniture</a>
 		</span>
 		<span class="sell clothes">
-			<a class='link' href="?category=clothes?page=<?= $number; ?>">Clothes</a>
+			<a class='link' href="?category=clothes&page=1">Clothes</a>
 		</span>
 		<span class="sell cars">
-			<a class='link' href="?category=cars?page=<?= $number; ?>">Cars</a>
+			<a class='link' href="?category=cars&page=1">Cars</a>
 		</span>
 		<span class="sell pets">
-			<a class='link' href="?category=pets?page=<?= $number; ?>">Pets</a>
+			<a class='link' href="?category=pets&page=1">Pets</a>
 		</span>
 	<table class='list'>
 	<tr>
@@ -76,7 +85,7 @@ $stmt->execute();
 			<?php } ?>
 			<tr/>
 		<?php if($number < $count / $increment) { ?>
-		<a class='page' href="?page=<?= $number + 1;?>">Next</a>
+		<a class='page' href="?category=<?= $something;?>&page=<?= $number + 1;?>">Next</a>
 		<?php } ?>
 		</table>
 	</div>
