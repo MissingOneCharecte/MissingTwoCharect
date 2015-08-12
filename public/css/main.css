@@ -7,9 +7,33 @@ html, body {
 	height:100%;
 	font-family: "Times New Roman", Times, serif;
 }
+a {
+	font-size: 20px;
+	color: #38373C;
+}
 #wrapper {
 	min-height:100%;
 	position:relative;
+}
+.page {
+	border-radius: 20px;
+	border-style: solid;
+	border-color: black;
+	border-width: 3px;
+	background-color: lightgrey;
+	padding: 5px;
+}
+td {
+	border-style: solid;
+	border-color: black;
+	border-width: 3px;
+	background-color: lightgrey
+}
+tr {
+	border-style: solid;
+	border-color: black;
+	border-width: 3px;
+	background-color: lightgrey
 }
 #media {
 	float: right;
@@ -32,18 +56,37 @@ html, body {
 	background-image: url(/img/red.jpg);
 	color: grey;
 }
+.index {
+	position: absolute;
+	height: 7%;
+	width: 75%;
+	left: 10%;
+	top: 13%;
+	text-align: center;
+}
+.sell {
+	position: relative;
+	padding: 20px;
+	height: 30%;
+	width: 30%;
+	border-radius: 20px;
+	border-style: solid;
+	border-color: black;
+	border-width: 3px;
+	background-color: darkgrey;
+	padding: 10px;
+}
+.test {
+	position: relative;
+	height: 100px;
+	width: 100px;
+}
+.list {
+	height: 400px;
+	width: 100%;
+}
 #navbar {
 	width: 90%;
-}
-a:visited {
-	color: #38373C;
-}
-a:hover {
-	color: #73717D;
-}
-a {
-	font-size: 20px;
-	color: #38373C;
 }
 .form {
 	position: relative;
