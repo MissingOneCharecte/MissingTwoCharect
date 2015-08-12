@@ -21,6 +21,8 @@ if (isset($_GET['category'])) {
 	} elseif ($_GET['category'] == "pets") {
 		$something = 'pets';
 	}
+	$count = $dbc->query("SELECT count(*) FROM listed_items WHERE category = '$something'")->fetchColumn();
+
 	$stmt = $dbc->prepare("SELECT * FROM listed_items WHERE category = '$something' ORDER BY publish_date DESC LIMIT " . $increment . " OFFSET " . $offSet); 
 } else {
 	$stmt = $dbc->prepare('SELECT * FROM listed_items ORDER BY publish_date DESC LIMIT ' . $increment . ' OFFSET ' . $offSet);
@@ -47,19 +49,19 @@ $stmt->execute();
 			<a  class='page' href="?page=<?= $number - 1;?>">Previous</a>
 		<?php } ?>
 		<span class="sell electronics">
-			<a class='link' href="?category=electronics">Electronics</a>
+			<a class='link' href="?category=electronics?page=<?= $number; ?>">Electronics</a>
 		</span>
 		<span class="sell furniture">
-			<a class='link' href="?category=furniture">Furniture</a>
+			<a class='link' href="?category=furniture?page=<?= $number; ?>">Furniture</a>
 		</span>
 		<span class="sell clothes">
-			<a class='link' href="?category=clothes">Clothes</a>
+			<a class='link' href="?category=clothes?page=<?= $number; ?>">Clothes</a>
 		</span>
 		<span class="sell cars">
-			<a class='link' href="?category=cars">Cars</a>
+			<a class='link' href="?category=cars?page=<?= $number; ?>">Cars</a>
 		</span>
 		<span class="sell pets">
-			<a class='link' href="?category=pets">Pets</a>
+			<a class='link' href="?category=pets?page=<?= $number; ?>">Pets</a>
 		</span>
 	<table class='list'>
 	<tr>
