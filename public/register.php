@@ -35,6 +35,7 @@
             $username = escapeVar(inputGet('username'));
             $password = escapeVar(inputGet('password'));
             $email = escapeVar(inputGet('email'));
+            $password = password_hash($password , PASSWORD_DEFAULT);
 
             if(inputHas('first_name') || inputHas('last_name')) {
                 if(inputHas('first_name') && inputHas('last_name')) {
