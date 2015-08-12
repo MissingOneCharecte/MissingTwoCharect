@@ -1,4 +1,7 @@
 <?php
+require_once'../database/connect.php';
+$stmt = $dbc->prepare('SELECT * FROM users WHERE id = 1');
+$stmt->execute();
 function pageController() {
   $data = [];
   if (!empty($_SESSION['status']) && $_SESSION['status'] == 'loggedin') {
@@ -31,6 +34,19 @@ function pageController() {
     <div id="wrapper">
       <?php require_once'../views/partials/navbar.php'; ?>
     <div id="content">
+            <table>
+        <tr>
+            <?php
+            foreach($stmt as $id => $park) { ?>
+            <tr>
+                <td><?= $park['id']; ?>:</td>
+                <td><?= $park['username']; ?></td>
+                <td><?= $park['password']; ?></td>
+                <td><?= $park['email']; ?></td>
+                <tr/>
+                <?php } ?>
+                <tr/>
+            </table>
     <form class='form' method="POST">
         <label>Name</label>
         <input type="text" name="username"><br>
