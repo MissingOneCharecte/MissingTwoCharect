@@ -1,8 +1,15 @@
 <?php
+session_start();
 require_once'../database/connect.php';
+require_once'../utils/Auth.php';
+require_once'../utils/Input.php';
+
 if (!empty($_POST['username']) || !empty($_POST['password'])) {
-    $user = $_POST['username'];
-    $pass = $_POST['password'];
+    $user = escapeVar($_POST['username']);
+    $pass = escapeVar($_POST['password']);
+    $_SESSION['username'] = $user; 
+    $_SESSION['password'] = $pass;
+    Auth::attempt($user , $pass);
     $stmt = $dbc->prepare("SELECT * FROM users WHERE username = '$user' AND password = '$pass'");
 }
 if(isset($stmt)) {
@@ -16,6 +23,7 @@ if(isset($stmt)) {
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
 <body>
+    <h1>Login HERE!</h1>
     <div id="wrapper">
       <?php require_once'../views/partials/navbar.php'; ?>
     <div id="content">
@@ -30,7 +38,7 @@ if(isset($stmt)) {
                     <td><?= $park['password']; ?></td>
                     <td><?= $park['email']; ?></td>
                     <tr/>
-                    <?php } 
+                <?php } 
             }?>
                 <tr/>
             </table>
