@@ -1,7 +1,6 @@
 <?php
 session_start();
 require_once'../database/connect.php';
-$dbc->exec("USE list_db"); 
 $count = $dbc->query('SELECT count(*) FROM listed_items')->fetchColumn();
 $increment = 5;
 if (isset($_GET['page']) && $_GET['page'] < $count - $increment && $_GET['page'] >= 1) {

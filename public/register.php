@@ -81,8 +81,8 @@
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
 <body>
-    <h1 class='reghere'>Register Here!</h1>
     <form class='form' method="POST">
+        <h1 class='reghere'>Register Here!</h1>
         <label>Username</label>
         <input type="text" name="username"><span id='passwordProblem'> <?php if(isset($usernameSame) && $usernameSame == true){ echo "Username is taken"; } ?> </span> <br>
         <label>Email</label>
