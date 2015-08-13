@@ -83,6 +83,7 @@ $test = $_SESSION['items'];
 		foreach($stmt as $id => $item) { ?>
 		<tr>
 			<td>User: <a href="http://missingonecharecte.dev/show.php?which=<?= array_search($item['username'], $test); ?>"><?= $item['username']; ?></a></td>
+			<td><img class='blah' src="/img/grey.png"></td>
 			<td>Price: <?= $item['sales']; ?></td>
 			<td>Date: <?= $item['publish_date']; ?></td>
 			<td>Category: <?= $item['category']; ?></td>
@@ -94,9 +95,9 @@ $test = $_SESSION['items'];
 		<a class='page' href="?category=<?= $something;?>&page=<?= $number + 1;?>">Next</a>
 		<?php } ?>
 		</table>
-		<a href="http://codeup.dev/rabbit_reset.php">Reset</a>
 	</div>
 	<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
-	<script src="/js/media.js"></script><?php require_once'../views/partials/footer.php' ?>
+	<script src="/js/media.js">
+</script><?php require_once'../views/partials/footer.php' ?>
 </body>
 </html>

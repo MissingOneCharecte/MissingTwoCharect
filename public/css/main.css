@@ -7,6 +7,10 @@ html, body {
 	height:100%;
 	font-family: "Times New Roman", Times, serif;
 }
+.blah {
+	height: 70px;
+	width: 70px;
+}
 a {
 	font-size: 20px;
 	color: white;
@@ -14,6 +18,11 @@ a {
 #wrapper {
 	min-height:100%;
 	position:relative;
+}
+form {
+	background-color: black;
+	border-color: white;
+	border-style: solid;
 }
 .page {
 	border-radius: 20px;
