@@ -36,10 +36,6 @@
             $password = escapeVar(inputGet('password'));
             $email = escapeVar(inputGet('email'));
             $_SESSION['databasePassword'] = $password;
-            $userDatabase = "FLUSH PRIVILEGES; CREATE USER '$username'@'localhost' IDENTIFIED BY '$_SESSION[databasePassword]';
-            GRANT SELECT ON listed_items TO '$username'@'localhost';
-            GRANT SELECT ON users TO '$username'@'localhost';";
-            $dbc->exec($userDatabase);
             $password = password_hash($password , PASSWORD_DEFAULT);
 
             if(inputHas('first_name') || inputHas('last_name')) {
