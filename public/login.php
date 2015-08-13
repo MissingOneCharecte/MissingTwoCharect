@@ -20,22 +20,8 @@ if(isset($stmt)) {
     <div id="wrapper">
       <?php require_once'../views/partials/navbar.php'; ?>
     <div id="content">
-            <table>
-        <tr>
-            <?php
-            if (isset($stmt)) {
-                foreach($stmt as $id => $park) { ?>
-                <tr>
-                    <td><?= $park['id']; ?>:</td>
-                    <td><?= $park['username']; ?></td>
-                    <td><?= $park['password']; ?></td>
-                    <td><?= $park['email']; ?></td>
-                    <tr/>
-                    <?php } 
-            }?>
-                <tr/>
-            </table>
     <form class='form' method="POST">
+        <h1 class='reghere'>Log In Here!</h1>
         <label>Name</label>
         <input type="text" name="username"><br>
         <label>Password</label>
@@ -43,7 +29,6 @@ if(isset($stmt)) {
         <input type="submit"><br>
         <a href="register.php">Not a Member? Register Here.</a>
     </form>
-
     </div>
     <?php require_once'../views/partials/footer.php' ?>
   </div>

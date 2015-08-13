@@ -1,7 +1,6 @@
 <?php
 session_start();
 require_once'../database/connect.php';
-$dbc->exec("USE list_db"); 
 $all = $dbc->prepare('SELECT * FROM listed_items ORDER BY publish_date DESC');
 $all->execute();
 ?>
