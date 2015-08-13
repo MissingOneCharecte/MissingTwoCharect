@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once'../database/connect.php';
 $dbc->exec("USE list_db"); 
 $count = $dbc->query('SELECT count(*) FROM listed_items')->fetchColumn();
@@ -35,6 +36,16 @@ if (isset($_GET['category'])) {
 // $test = 'electronics';
 // 	$stmt = $dbc->prepare("SELECT * FROM listed_items WHERE category = '$test' ORDER BY publish_date DESC LIMIT " . $increment . " OFFSET " . $offSet); 	
 $stmt->execute();
+if (empty($_SESSION['items'])) {
+	$_SESSION['items'] = [];
+	$all = $dbc->prepare('SELECT * FROM listed_items ORDER BY publish_date DESC');
+	$all->execute();
+	foreach ($all as $key => $value) {
+		$enter =  $value['username'];
+		array_push($_SESSION['items'], $enter);
+	}
+}
+$test = $_SESSION['items'];
 ?>
 <!DOCTYPE html>
 <html>
@@ -42,11 +53,6 @@ $stmt->execute();
 	<title>Marketing Homepage</title>
 	<link rel="icon" href="img/favicon.ico"/>
 	<link class='link' rel="stylesheet" type="text/css" href="css/main.css">
-	<link class='link' rel="stylesheet" type="text/css" href="../views/partials/header.php">
-	<link class='link' rel="stylesheet" type="text/css" href="../views/partials/footer.php">
-	<link class='link' rel="stylesheet" type="text/css" href="../views/partials/navbar.php">
-	<style type="text/css">
-	</style>
 </head>
 <body>
 	<?php require_once'../views/partials/navbar.php'; ?>
@@ -77,10 +83,11 @@ $stmt->execute();
 		<?php
 		foreach($stmt as $id => $item) { ?>
 		<tr>
-			<td>User: <?= $item['username']; ?></td>
-			<td>Cost: <?= $item['sales']; ?></td>
+			<td>User: <a href="http://missingonecharecte.dev/show.php?which=<?= array_search($item['username'], $test); ?>"><?= $item['username']; ?></a></td>
+			<td>Price: <?= $item['sales']; ?></td>
 			<td>Date: <?= $item['publish_date']; ?></td>
-			<td>Price: <?= $item['category']; ?></td>
+			<td>Category: <?= $item['category']; ?></td>
+			<td>Desc: <?= $item['description']; ?></td>
 			<tr/>
 			<?php } ?>
 			<tr/>
@@ -88,6 +95,7 @@ $stmt->execute();
 		<a class='page' href="?category=<?= $something;?>&page=<?= $number + 1;?>">Next</a>
 		<?php } ?>
 		</table>
+		<a href="http://codeup.dev/rabbit_reset.php">Reset</a>
 	</div>
 	<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
 	<script src="/js/media.js"></script><?php require_once'../views/partials/footer.php' ?>
