@@ -70,6 +70,8 @@
             $stmt->bindValue(':email' , $_SESSION['email'] , PDO::PARAM_STR);
 
             $stmt->execute();
+            header("Location: http://missingonecharecte.dev/login.php");
+            exit(); 
         }
     }
 

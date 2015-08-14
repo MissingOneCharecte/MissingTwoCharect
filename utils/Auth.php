@@ -1,43 +1,45 @@
 <?php
 	class Auth 
 		{
-			
-			protected static function getInfo($username,$password) {
-				$setPassword = $password;
-				
+			public $result;
+
+			protected static function getInfo($username,$password) {				
 				$userDBinfo = new mysqli("127.0.0.1", "root", "", "list_db");
 				$usernameVar = mysqli_query($userDBinfo , "SELECT * FROM users WHERE username = '$username'");
-				$queryHash = mysqli_query($userDBinfo , "SELECT password FROM users WHERE password = '$password'");
-				$hashedPassword = mysqli_fetch_row($queryHash);
+				$usersRow = mysqli_fetch_row($usernameVar);
 		        $result = mysqli_num_rows($usernameVar);
 		        if($result > 0) { 
-					if(password_verify($_SESSION['password'] , '$2y$10$fmtLDBsMA56PBGlakVMouu2N8DcpMeC5dQl6Eg64GP62jLoUNCDPm')){ 
-						echo "<script type='text/javascript'> alert('yeah!'); </script>";
+					if(password_verify($_SESSION['password'] , $usersRow[2])){ 
+						echo "<script type='text/javascript'> alert('Login info correct!'); </script>";
+						header("Location: http://missingonecharecte.dev");
+						exit();
 					}
-
 				}
 			}
 			//Get input from login field put in parameters and compare that to database info
 			public static function attempt($username, $password) 
 			{
-				self::getInfo($_SESSION['username'] , $_SESSION['password']);
-					// header("Location: google.com");
-					// exit();      
-				
-		        	
-				 
-					// $message = "Incorrect username or password";
-					// echo "<script type='text/javascript'> alert('$message'); </script>";
-				
+				self::getInfo($_SESSION['username'] , $_SESSION['password']);    
 			}
 
 			//
-			protected static function check() 
+			public static function check($username) 
 			{
-				if(password_verify($_SESSION["password"] , self::$setPassword)){			
-					return true;
-				} else {
-					return false;
+				$userDBinfo = new mysqli("127.0.0.1", "root", "", "list_db");
+				$usernameVar = mysqli_query($userDBinfo , "SELECT * FROM users WHERE username = '$username'");
+				$usersRow = mysqli_fetch_row($usernameVar);
+		        $result = mysqli_num_rows($usernameVar);
+		        if($result > 0) { 
+					if($usernameVar) {
+						if(password_verify($_SESSION["password"] , $usersRow[2])){			
+							return true;
+						} else {
+							echo "<script type='text/javascript'> alert('Login info correct!'); </script>";
+							return false;
+						}
+					} else {
+						return;
+					}
 				}
 			}
 			
@@ -54,5 +56,4 @@
 
 			
 	}
-
 ?>
