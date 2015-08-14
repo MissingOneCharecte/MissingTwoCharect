@@ -6,6 +6,7 @@
 <html>
 <head>
 	<title>Help</title>
+	<link rel="icon" href="img/favicon.ico"/>
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
 <body>

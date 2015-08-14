@@ -1,46 +1,56 @@
 html, body {
 	background-color: darkgrey;
-	background-image: url(/img/Grey.jpg);
-	color: #000000;
+	background-image: url(/img/red.jpg);
+	color: white;
 	margin:0;
 	padding:0;
 	height:100%;
 	font-family: "Times New Roman", Times, serif;
 }
+.blah {
+	height: 70px;
+	width: 70px;
+}
 a {
 	font-size: 20px;
-	color: #38373C;
+	color: white;
 }
 #wrapper {
 	min-height:100%;
 	position:relative;
 }
+form {
+	background-color: black;
+	border-color: white;
+	border-style: solid;
+}
 .page {
 	border-radius: 20px;
 	border-style: solid;
-	border-color: black;
+	border-color: white;
 	border-width: 3px;
-	background-color: lightgrey;
+	background-color: black;
 	padding: 5px;
 }
 td {
 	border-style: solid;
-	border-color: black;
+	border-color: white;
 	border-width: 3px;
-	background-color: lightgrey
+	background-color: black;
 }
 tr {
 	border-style: solid;
-	border-color: black;
+	border-color: white;
 	border-width: 3px;
-	background-color: lightgrey
+	background-color: black;
 }
 #media {
 	float: right;
 }
 #header {
 	padding-top:20px;
-	background-image: url(/img/white-and-gray-background.jpg);
+	background-color: black
+	;
 }
 #content {
 	padding-bottom: 100px;
@@ -53,8 +63,8 @@ tr {
 	position:absolute;
 	bottom:0;
 	left:0;
-	background-image: url(/img/red.jpg);
-	color: grey;
+	background-color: black;
+	color: white;
 }
 .index {
 	position: absolute;
@@ -71,9 +81,9 @@ tr {
 	width: 30%;
 	border-radius: 20px;
 	border-style: solid;
-	border-color: black;
+	border-color: white;
 	border-width: 3px;
-	background-color: darkgrey;
+	background-color: black;
 	padding: 10px;
 }
 .test {
