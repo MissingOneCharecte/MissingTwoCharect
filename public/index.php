@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once'../database/connect.php';
+require_once 'bootstrap.php';
 $count = $dbc->query('SELECT count(*) FROM listed_items')->fetchColumn();
 $increment = 5;
 if (isset($_GET['page']) && $_GET['page'] < $count - $increment && $_GET['page'] >= 1) {
@@ -54,7 +54,6 @@ $test = $_SESSION['items'];
 	<link class='link' rel="stylesheet" type="text/css" href="css/main.css">
 </head>
 <body>
-	<?php require_once'../views/partials/navbar.php'; ?>
 	<div class="index" id="content">
 		<?php if ($number > 1 ) { ?>
 			<a  class='page' href="?category=<?= $something;?>&page=<?= $number - 1;?>">Previous</a>
@@ -77,27 +76,40 @@ $test = $_SESSION['items'];
 		<span class="sell pets">
 			<a class='link' href="?category=pets&page=1">Pets</a>
 		</span>
-	<table class='list'>
-	<tr>
-		<?php
-		foreach($stmt as $id => $item) { ?>
+		<table class='list'>
 		<tr>
-			<td>User: <a href="http://missingonecharecte.dev/show.php?which=<?= array_search($item['username'], $test); ?>"><?= $item['username']; ?></a></td>
-			<td><img class='blah' src="/img/grey.png"></td>
-			<td>Price: <?= $item['sales']; ?></td>
-			<td>Date: <?= $item['publish_date']; ?></td>
-			<td>Category: <?= $item['category']; ?></td>
-			<td>Desc: <?= $item['description']; ?></td>
-			<tr/>
+			<?php
+			foreach($stmt as $id => $item) { ?>
+			<tr>
+				<td>User: <a href="http://missingonecharecte.dev/show.php?which=<?= array_search($item['username'], $test); ?>"><?= $item['username']; ?></a></td>
+				<td><img class='blah' src="/img/grey.png"></td>
+				<td>Price: <?= $item['sales']; ?></td>
+				<td>Date: <?= $item['publish_date']; ?></td>
+				<td>Category: <?= $item['category']; ?></td>
+				<td>Desc: <?= $item['description']; ?></td>
+				<tr/>
+				<?php } ?>
+				<tr/>
+			<?php if($number < $count / $increment) { ?>
+			<a class='page' href="?category=<?= $something;?>&page=<?= $number + 1;?>">Next</a>
 			<?php } ?>
-			<tr/>
-		<?php if($number < $count / $increment) { ?>
-		<a class='page' href="?category=<?= $something;?>&page=<?= $number + 1;?>">Next</a>
-		<?php } ?>
 		</table>
+
+		<div id="butt">
+			<button type="button" class="btn btn-primary btn-lg btn-block">
+			Create your ad here!</button>
+		</div>
+	
 	</div>
 	<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
-	<script src="/js/media.js">
-</script><?php require_once'../views/partials/footer.php' ?>
+	<script src="/js/media.js"> </script>
+	<script>
+		
+	$("#butt").on("click" , function() {
+		location.replace("http://missingonecharecte.dev/create.php")
+	});
+	
+		
+	</script>
 </body>
 </html>

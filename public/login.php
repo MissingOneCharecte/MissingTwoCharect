@@ -1,8 +1,8 @@
 <?php
 session_start();
+require_once '../bootstrap.php';
 require_once'../database/connect.php';
 require_once'../utils/Auth.php';
-require_once'../utils/Input.php';
 
 if (!empty($_POST['username']) || !empty($_POST['password'])) {
     $user = escapeVar($_POST['username']);
@@ -25,7 +25,6 @@ if(isset($stmt)) {
 </head>
 <body>
     <div id="wrapper">
-        <?php require_once'../views/partials/navbar.php'; ?>
         <div id="content">
             <form class='form' method="POST">
                 <label>Name</label>
@@ -37,7 +36,6 @@ if(isset($stmt)) {
             </form>
 
         </div>
-        <?php require_once'../views/partials/footer.php' ?>
         <h1>Login HERE!</h1>
     </div>
     <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
