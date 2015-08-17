@@ -47,6 +47,16 @@
 				return $_SESSION["username"];
 			}
 
+			public static function checkUsername($username) {
+				$userDBinfo = new mysqli("127.0.0.1", "root", "", "list_db");
+				$usernameVar = mysqli_query($userDBinfo , "SELECT * FROM users WHERE username = '$username'");
+				$result = mysqli_num_rows($usernameVar);
+				if($result > 0) { 
+					return true;
+				} 
+				return false;
+			}
+
 			public static function logout()
 			{
 				header("Location: missingonecharecte.dev/logout.php");

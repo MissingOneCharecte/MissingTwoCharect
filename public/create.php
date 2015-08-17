@@ -10,20 +10,16 @@
             :description
         )');
 
-    if (isset($_POST['postTitle']) && isset($_POST['price']) && isset($_POST['categorySelect'])) {
-        $_SESSION['title'] = escapeVar($_POST['postTitle']);
-        $_SESSION['sales'] = escapeVar($_POST['sales']);
-        $_SESSION['categorySelect'] = $_POST['categorySelect'];
-        if(isset($_POST['description'])) {
-            $_SESSION['description'] = escapeVar($_POST['description']);
-        }        
-
+    if (isset($_POST['postTitle']) && isset($_POST['sales']) && isset($_POST['categorySelect'])) {
         $stmt->bindValue(':username' , $_SESSION['username'] , PDO::PARAM_STR);
-        $stmt->bindValue(':title' , $_SESSION['title'] , PDO::PARAM_STR);
-        $stmt->bindValue(':sales' , $_SESSION['sales'] , PDO::PARAM_STR);
-        $stmt->bindValue(':publish_date' , date("Y-m-d H:i:s") , PDO::PARAM_STR);
-        $stmt->bindValue(':category' , $_SESSION['categorySelect'] , PDO::PARAM_STR);
-        $stmt->bindValue(':description' , $_SESSION['description'] , PDO::PARAM_STR);
+        $stmt->bindValue(':title' , escapeVar($_POST['postTitle']) , PDO::PARAM_STR);
+        $stmt->bindValue(':sales' , escapeVar($_POST['sales']) , PDO::PARAM_STR);
+        $stmt->bindValue(':publish_date' , date("Y-m-d H:i") , PDO::PARAM_STR);
+        $stmt->bindValue(':category' , $_POST['categorySelect'] , PDO::PARAM_STR);
+
+        if(isset($_POST['description'])) {
+            $stmt->bindValue(':description' , escapeVar($_POST['description']) , PDO::PARAM_STR);
+        }        
     
         $stmt->execute();
     }

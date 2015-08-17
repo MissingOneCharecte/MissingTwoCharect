@@ -78,12 +78,12 @@ $test = $_SESSION['items'];
 			<?php
 			foreach($stmt as $id => $item) { ?>
 			<tr>
-				<td><?= $item['title']; ?></td>
+				<td>User: <a href="http://missingonecharecte.dev/show.php?which=<?= array_search($item['username'], $test); ?>"><?= $item['username']; ?></a></td>
 				<td><img class='blah' src="/img/grey.png"></td>
 				<td>Price: <?= $item['sales']; ?></td>
 				<td>Date: <?= $item['publish_date']; ?></td>
 				<td>Category: <?= $item['category']; ?></td>
-				<td>User: <a href="http://missingonecharecte.dev/show.php?which=<?= array_search($item['username'], $test); ?>"><?= $item['username']; ?></a></td>
+				<td>Desc: <?= $item['description']; ?></td>
 				<tr/>
 				<?php } ?>
 				<tr/>

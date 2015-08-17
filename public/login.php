@@ -3,15 +3,15 @@ session_start();
 require_once '../bootstrap.php';
 require_once'../database/connect.php';
 require_once'../utils/Auth.php';
-if (!empty($_SESSION['username'])) {
-    header("location: http://missingonecharecte.dev/");
-}
+
 if (!empty($_POST['username']) || !empty($_POST['password'])) {
     $user = escapeVar($_POST['username']);
     $pass = escapeVar($_POST['password']);
     $_SESSION['username'] = $user; 
     $_SESSION['password'] = $pass;
-    Auth::attempt($user , $pass);
+    if(Auth::checkUsername($user)) {
+        Auth::attempt($user , $pass);
+    }
     
     $stmt = $dbc->prepare("SELECT * FROM users WHERE username = '$user' AND password = '$pass'");
 }
@@ -22,8 +22,8 @@ if(isset($stmt)) {
 <!DOCTYPE html>
 <html>
 <head>
-	<title>LogIn</title>
-	<link rel="stylesheet" type="text/css" href="css/main.css">
+    <title>LogIn</title>
+    <link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
 <body>
     <div id="wrapper">
