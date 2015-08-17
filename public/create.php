@@ -23,8 +23,16 @@
     
         $stmt->execute();
     }
-    
-    
+    var_dump($_FILES);
+    if($_FILES) {
+        $uploads_directory = 'img/uploads/';
+        $filename = $uploads_directory . basename($_FILES['somefile']['name']);
+        if (move_uploaded_file($_FILES['somefile']['tmp_name'], $filename)) {
+            echo '<p>The file '. basename( $_FILES['somefile']['name']). ' has been uploaded.</p>';
+        } else {
+            echo "Sorry, there was an error uploading your file.";
+        }
+    }
 ?>
 
 <html>
@@ -50,6 +58,7 @@
               <option value="furniture">Furniture</option>
             </select>
         </p>
+        <input type="file" name="somefile">
         <label>Description</label>
           <textarea class="form-control" rows="5" id="comment" name="description"></textarea>
         <input type="submit">

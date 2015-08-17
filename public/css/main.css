@@ -23,6 +23,8 @@ html, body {
 a {
 	font-size: 23px;
 	color: white;
+}
+.nag {
 	margin-left: 55px;
 }
 #wrapper {
