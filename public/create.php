@@ -2,17 +2,18 @@
     session_start();
     require_once'bootstrap.php';  
                   
-    if (isset($_POST['postTitle']) && isset($_POST['price'])) {
+    if (isset($_POST['postTitle']) && isset($_POST['price']) && isset($_POST['categorySelect'])) {
         $_SESSION['title'] = escapeVar($_POST['title']);
         $_SESSION['password'] = escapeVar($_POST['price']);
-        $_SESSION['category'] = escapeVar($_POST['category']);
+        $_SESSION['categorySelect'] = escapeVar($_POST['categorySelect']);
     
-        if(isset($_POST['category'])) {
+        if(isset($_POST['description'])) {
             $_SESSION['description'] = escapeVar($_POST['description']);
         }
         
         // $stmt = $dbc->prepare("SELECT * FROM users WHERE username = '$user' AND password = '$pass'");
     }
+    
     // if(isset($stmt)) {
     //     $stmt->execute();
     // }
