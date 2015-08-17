@@ -11,7 +11,7 @@ $dbc->exec('CREATE TABLE listed_items(
     sales DECIMAL(10,2) NOT NULL,
     publish_date VARCHAR(40) NOT NULL,
     category VARCHAR(50) NOT NULL,
-    description TEXT, 
+    description TEXT,
     images VARCHAR(700),
     PRIMARY KEY (id)
 )');
