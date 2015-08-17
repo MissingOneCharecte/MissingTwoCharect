@@ -1,8 +1,9 @@
 <?php 
     session_start();
     require_once'bootstrap.php';  
-     $stmt = $dbc->prepare('INSERT INTO listed_items (username,sales,publish_date,category, description) VALUES (
+     $stmt = $dbc->prepare('INSERT INTO listed_items (username,title,sales,publish_date,category, description) VALUES (
             :username, 
+            :title,
             :sales, 
             :publish_date, 
             :category,
@@ -10,17 +11,18 @@
         )');
 
     if (isset($_POST['postTitle']) && isset($_POST['price']) && isset($_POST['categorySelect'])) {
-        $_SESSION['title'] = escapeVar($_POST['title']);
-        $_SESSION['price'] = escapeVar($_POST['price']);
-        $_SESSION['categorySelect'] = escapeVar($_POST['categorySelect']);
+        $_SESSION['title'] = escapeVar($_POST['postTitle']);
+        $_SESSION['sales'] = escapeVar($_POST['sales']);
+        $_SESSION['categorySelect'] = $_POST['categorySelect'];
         if(isset($_POST['description'])) {
             $_SESSION['description'] = escapeVar($_POST['description']);
         }        
 
         $stmt->bindValue(':username' , $_SESSION['username'] , PDO::PARAM_STR);
-        $stmt->bindValue(':price' , $_SESSION['price'] , PDO::PARAM_STR);
+        $stmt->bindValue(':title' , $_SESSION['title'] , PDO::PARAM_STR);
+        $stmt->bindValue(':sales' , $_SESSION['sales'] , PDO::PARAM_STR);
         $stmt->bindValue(':publish_date' , date("Y-m-d H:i:s") , PDO::PARAM_STR);
-        $stmt->bindValue(':category' , $_SESSION['category'] , PDO::PARAM_STR);
+        $stmt->bindValue(':category' , $_SESSION['categorySelect'] , PDO::PARAM_STR);
         $stmt->bindValue(':description' , $_SESSION['description'] , PDO::PARAM_STR);
     
         $stmt->execute();
@@ -41,7 +43,7 @@
         <label>Title</label>
         <input type="text" name="postTitle"><br>
         <label>Price</label>
-        <input type="text" name="price"><br>
+        <input type="text" name="sales"><br>
         <label>Category</label>
         <p>
             <select name="categorySelect">
