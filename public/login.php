@@ -3,7 +3,9 @@ session_start();
 require_once '../bootstrap.php';
 require_once'../database/connect.php';
 require_once'../utils/Auth.php';
-
+if (!empty($_SESSION['username'])) {
+    header("location: http://missingonecharecte.dev/");
+}
 if (!empty($_POST['username']) || !empty($_POST['password'])) {
     $user = escapeVar($_POST['username']);
     $pass = escapeVar($_POST['password']);

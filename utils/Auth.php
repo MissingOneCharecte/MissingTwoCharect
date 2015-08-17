@@ -34,7 +34,6 @@
 						if(password_verify($_SESSION["password"] , $usersRow[2])){			
 							return true;
 						} else {
-							echo "<script type='text/javascript'> alert('Login info correct!'); </script>";
 							return false;
 						}
 					} else {

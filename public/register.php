@@ -2,7 +2,9 @@
     session_start();
     require_once 'bootstrap.php';                         
     $mysqli = new mysqli("127.0.0.1", "root", "", "list_db");
-    
+    if (!empty($_SESSION['username'])) {
+    header("location: http://missingonecharecte.dev/");
+    }
     if(inputHas('username') && inputHas('email') && inputHas('password')) {
         if(!($_POST['password'] == $_POST['retype_password'])) {
             $notSame = true;
