@@ -8,9 +8,17 @@ html, body {
 	font-size: 20px;
 	font-family: "Times New Roman", Times, serif;
 }
+#next {
+	position: absolute;
+	left: 75%;
+}
+#prev {
+	position: absolute;
+	left: 15%;
+}
 .blah {
-	height: 70px;
-	width: 70px;
+	height: 50px;
+	width: 50px;
 }
 a {
 	font-size: 23px;
@@ -88,11 +96,6 @@ tr {
 	background-color: black;
 	padding: 10px;
 }
-.test {
-	position: relative;
-	height: 100px;
-	width: 100px;
-}
 .list {
 	height: 400px;
 	width: 100%;
@@ -117,7 +120,6 @@ input {
 	height: 50px;
 	color: black;
 }
-
 #passwordProblem {
 	color: red;
 	font-size: 19px;
@@ -136,12 +138,6 @@ h1 {
 #faqBody {
 	background-color: grey;
 	opacity: 0.95;
-}
-#butt {
-	font-size: 30px;
-	margin-top: 50px;
-	color: red;
-	background-color: black;
 }
 .createAd {
 	margin-top: 100px;
