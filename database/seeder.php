@@ -32,13 +32,12 @@
 	$truncateQuery = 'TRUNCATE TABLE listed_items;'; 
 	$dbc->exec($truncateQuery);
 
-	$stmt = $dbc->prepare('INSERT INTO listed_items (username, title, sales ,publish_date ,category ,images) VALUES (
+	$stmt = $dbc->prepare('INSERT INTO listed_items (username, title, sales ,publish_date ,category) VALUES (
 		:username, 
 		:title,
 		:sales, 
 		:publish_date, 
-		:category,
-		:images )'
+		:category)'
 	);
 	
 	foreach ($listed_items as $item) {
@@ -47,7 +46,6 @@
 		$stmt->bindValue(':sales', $item['sales'], PDO::PARAM_STR); 
 		$stmt->bindValue(':publish_date', $item['publish_date'], PDO::PARAM_STR);
 		$stmt->bindValue(':category', $item['category'], PDO::PARAM_STR);
-		$stmt->bindValue(':images', $item['images'], PDO::PARAM_STR);
 
 		$stmt->execute();
 	}
