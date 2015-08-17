@@ -55,9 +55,6 @@ $test = $_SESSION['items'];
 </head>
 <body>
 	<div class="index" id="content">
-		<?php if ($number > 1 ) { ?>
-			<a  class='page' href="?category=<?= $something;?>&page=<?= $number - 1;?>">Previous</a>
-		<?php } ?>
 		<span class="sell all">
 			<a class='link' href="?category=home&page=1">All</a>
 		</span>
@@ -90,25 +87,29 @@ $test = $_SESSION['items'];
 				<tr/>
 				<?php } ?>
 				<tr/>
-			<?php if($number < $count / $increment) { ?>
-			<a class='page' href="?category=<?= $something;?>&page=<?= $number + 1;?>">Next</a>
-			<?php } ?>
 		</table>
-
-		<div id="butt">
-			<button type="button" class="btn btn-primary btn-lg btn-block">
+		<div>
+			<?php if ($number > 1 ) { ?>
+			<a  class='page' id='prev' href="?category=<?= $something;?>&page=<?= $number - 1;?>">Previous</a>
+			<?php } ?>
+			<?php if($number < $count / $increment) { ?>
+			<a class='page' id='next' href="?category=<?= $something;?>&page=<?= $number + 1;?>">Next</a>
+			<?php } ?>
+			</div>
+		<div>
+			<?php if (!empty($_SESSION['username'])) { ?>
+			<button type="button" id='but' class="btn btn-primary btn-lg">
 			Create your ad here!</button>
+			<?php } ?>
 		</div>
-	
 	</div>
 	<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
 	<script src="/js/media.js"> </script>
 	<script>
 		
-	$("#butt").on("click" , function() {
+	$("#but").on("click" , function() {
 		location.replace("http://missingonecharecte.dev/create.php")
 	});
-	
 		
 	</script>
 </body>
