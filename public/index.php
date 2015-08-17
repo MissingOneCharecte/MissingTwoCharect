@@ -99,7 +99,6 @@ $test = $_SESSION['items'];
 			<button type="button" class="btn btn-primary btn-lg btn-block">
 			Create your ad here!</button>
 		</div>
-	
 	</div>
 	<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
 	<script src="/js/media.js"> </script>
@@ -108,7 +107,6 @@ $test = $_SESSION['items'];
 	$("#butt").on("click" , function() {
 		location.replace("http://missingonecharecte.dev/create.php")
 	});
-	
 		
 	</script>
 </body>
