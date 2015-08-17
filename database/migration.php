@@ -1,5 +1,6 @@
 <?php
 require_once'connect.php';
+
 $dbc->exec(
 		'DROP TABLE IF EXISTS listed_items;'
 	);
