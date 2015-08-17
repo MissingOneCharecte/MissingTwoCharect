@@ -9,7 +9,9 @@ if (!empty($_POST['username']) || !empty($_POST['password'])) {
     $pass = escapeVar($_POST['password']);
     $_SESSION['username'] = $user; 
     $_SESSION['password'] = $pass;
-    Auth::attempt($user , $pass);
+    if(Auth::checkUsername($user)) {
+        Auth::attempt($user , $pass);
+    }
     
     $stmt = $dbc->prepare("SELECT * FROM users WHERE username = '$user' AND password = '$pass'");
 }
