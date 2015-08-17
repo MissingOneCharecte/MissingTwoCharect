@@ -6,6 +6,7 @@ $dbc->exec(
 $dbc->exec('CREATE TABLE listed_items(
 	id INT UNSIGNED NOT NULL AUTO_INCREMENT,
     username VARCHAR(32) NOT NULL,
+    title VARCHAR(200) NOT NULL,
     sales DECIMAL(10,2) NOT NULL,
     publish_date VARCHAR(40) NOT NULL,
     category VARCHAR(50) NOT NULL,
