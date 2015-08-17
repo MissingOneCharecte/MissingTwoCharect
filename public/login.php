@@ -23,10 +23,10 @@ if(isset($stmt)) {
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
 <body>
-    <h1>Login HERE!</h1>
     <div id="wrapper">
       <?php require_once'../views/partials/navbar.php'; ?>
     <div id="content">
+            <h1 class='reghere'>Login HERE!</h1>
             <table>
         <tr>
             <?php
