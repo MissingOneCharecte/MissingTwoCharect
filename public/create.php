@@ -1,13 +1,14 @@
 <?php 
     session_start();
     require_once'bootstrap.php';  
-     $stmt = $dbc->prepare('INSERT INTO listed_items (username,title,sales,publish_date,category, description) VALUES (
+     $stmt = $dbc->prepare('INSERT INTO listed_items (username,title,sales,publish_date,category,description, images) VALUES (
             :username, 
             :title,
             :sales, 
             :publish_date, 
             :category,
-            :description
+            :description,
+            :images
         )');
 
     if (isset($_POST['postTitle']) && isset($_POST['sales']) && isset($_POST['categorySelect'])) {
@@ -16,6 +17,7 @@
         $stmt->bindValue(':sales' , escapeVar($_POST['sales']) , PDO::PARAM_STR);
         $stmt->bindValue(':publish_date' , date("Y-m-d H:i") , PDO::PARAM_STR);
         $stmt->bindValue(':category' , $_POST['categorySelect'] , PDO::PARAM_STR);
+        $stmt->bindValue(':images' , $_FILES['name'] , PDO::PARAM_STR);
 
         if(isset($_POST['description'])) {
             $stmt->bindValue(':description' , escapeVar($_POST['description']) , PDO::PARAM_STR);
