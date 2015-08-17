@@ -79,7 +79,7 @@ $test = $_SESSION['items'];
 			foreach($stmt as $id => $item) { ?>
 			<tr>
 				<td><?= $item['title']; ?></td>
-				<td><img class='blah' src="/img/upload/<?= $item['images']; ?>"></td>
+				<td><img class='blah' src="/img/upload/<?php if($item['images']) { echo $item['images']; } else { echo "default.jpg"; } ?>"></td>
 				<td>Price: <?= $item['sales']; ?></td>
 				<td>Date: <?= $item['publish_date']; ?></td>
 				<td>Category: <?= $item['category']; ?></td>
