@@ -12,8 +12,8 @@ $dbc->exec('CREATE TABLE listed_items(
     publish_date VARCHAR(40) NOT NULL,
     category VARCHAR(50) NOT NULL,
     description TEXT, 
-    PRIMARY KEY (id),
-    UNIQUE (username)
+    images VARCHAR(700),
+    PRIMARY KEY (id)
 )');
  ;
 $dbc->exec(
