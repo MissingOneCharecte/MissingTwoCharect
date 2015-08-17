@@ -34,7 +34,6 @@
 						if(password_verify($_SESSION["password"] , $usersRow[2])){			
 							return true;
 						} else {
-							echo "<script type='text/javascript'> alert('Login info correct!'); </script>";
 							return false;
 						}
 					} else {
@@ -46,6 +45,16 @@
 			public static function user() 
 			{
 				return $_SESSION["username"];
+			}
+
+			public static function checkUsername($username) {
+				$userDBinfo = new mysqli("127.0.0.1", "root", "", "list_db");
+				$usernameVar = mysqli_query($userDBinfo , "SELECT * FROM users WHERE username = '$username'");
+				$result = mysqli_num_rows($usernameVar);
+				if($result > 0) { 
+					return true;
+				} 
+				return false;
 			}
 
 			public static function logout()
