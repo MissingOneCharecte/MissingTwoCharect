@@ -2,7 +2,6 @@
     session_start();
     require_once 'bootstrap.php';                         
     $mysqli = new mysqli("127.0.0.1", "root", "", "list_db");
-    var_dump($_POST);
     if(inputHas('username') && inputHas('email') && inputHas('password')) {
         if(($_POST['password'] != $_POST['retype_password'])) {
             $notSame = true;
@@ -72,8 +71,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Register</title>
-	<link rel="stylesheet" type="text/css" href="css/main.css">
+    <title>Register</title>
+    <link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
 <body>
     <h1 class='reghere'>Register Here!</h1>

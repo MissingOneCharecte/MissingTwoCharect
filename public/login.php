@@ -22,8 +22,8 @@ if(isset($stmt)) {
 <!DOCTYPE html>
 <html>
 <head>
-	<title>LogIn</title>
-	<link rel="stylesheet" type="text/css" href="css/main.css">
+    <title>LogIn</title>
+    <link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
 <body>
     <div id="wrapper">
