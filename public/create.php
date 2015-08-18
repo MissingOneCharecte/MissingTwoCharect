@@ -51,10 +51,10 @@
         <label>Category</label>
         <p>
             <select name="categorySelect">
-              <option value="electroic">Electronics</option>
+              <option value="Electronics">Electronics</option>
               <option value="car">Cars</option>
               <option value="clothes">Clothes</option>
-              <option value="pet">Pets</option>
+              <option value="pets">Pets</option>
               <option value="furniture">Furniture</option>
             </select>
         </p>
