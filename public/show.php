@@ -16,17 +16,16 @@ $all->execute();
 <body>
 	<?php require_once'../views/partials/navbar.php'; ?>
 	<div class="index" id="content">
-<?php foreach ($all as $key => $value) {
-        if($_GET['which'] == $key) { ?>
-            <tr>
-			<td>User Name: <?= $value[1]; ?></td>
-			<td>Cost: <?= $value[2]; ?></td>
-			<td>Date: <?= $value[3]; ?></td>
-			<td>Price: <?= $value[4]; ?></td>
-			<tr/>
-			<?php } ?>
-			<tr/>
-        </ul>
+		<?php foreach ($all as $key => $value) {
+        	if($_GET['which'] == $key) { ?>
+	            
+					<p class='showItems'>Title: <?= $value[2]; ?> </p>
+					<p class='showItems'>Cost: $<?= $value[3]; ?> </p>
+					<p class='showItems'>Description: <?= $value[6]; ?> </p>
+					<p class='showItems'>User Name: <?= $value[1]; ?> </p>
+					<p class='showItems'>Date/Time: <?= $value[4]; ?> </p>
+				
+				<?php } ?>
         <?php } ?>
 	</div>
 	<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
